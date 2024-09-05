@@ -3,34 +3,34 @@
  * @return {boolean}
  */
 function isValidSudoku(board) {
-  // 행, 열, 서브박스를 저장할 배열
-  let rows = Array.from({ length: 9 }, () => new Set());
-  let cols = Array.from({ length: 9 }, () => new Set());
-  let boxes = Array.from({ length: 9 }, () => new Set());
+  for (let i = 0; i < 9; i++) {
+    let row = new Set(),
+        col = new Set(),
+        box = new Set();
 
-  // 보드의 각 칸을 순회
-  for (let r = 0; r < 9; r++) {
-    for (let c = 0; c < 9; c++) {
-      let num = board[r][c];
-
-      // 빈 칸은 무시
-      if (num === ".") continue;
-
-      // 각 3x3 서브박스의 인덱스를 계산
-      let boxIndex = Math.floor(r / 3) * 3 + Math.floor(c / 3);
-
-      // 행, 열, 서브박스에 숫자가 이미 있으면 유효하지 않음
-      if (rows[r].has(num) || cols[c].has(num) || boxes[boxIndex].has(num)) {
-        return false;
+    for (let j = 0; j < 9; j++) {
+      let _row = board[i][j];
+      let _col = board[j][i];
+      let _box = board[3*Math.floor(i/3)+Math.floor(j/3)][3*(i%3)+(j%3)]
+      
+      
+      if (_row != '.') {
+         //빈값이아니면서, 이미 있던 값이면, return false invailid sudoku
+        if (row.has(_row)) return false;
+          //처음 발견한 값이면, _row를 추가
+        row.add(_row); //세트에 추가
       }
-
-      // 현재 숫자를 행, 열, 서브박스에 추가
-      rows[r].add(num);
-      cols[c].add(num);
-      boxes[boxIndex].add(num);
+      if (_col != '.') {
+        if (col.has(_col)) return false;
+        col.add(_col);
+      }
+      
+      if (_box != '.') {
+        if (box.has(_box)) return false;
+        box.add(_box);
+      } 
     }
   }
-
-  // 모든 검사를 통과하면 유효한 스도쿠
-  return true;
-}
+  //끝까지 loop가 false없이 돌았다면 true리턴 valid sudoku인게 인증됨
+  return true
+};
