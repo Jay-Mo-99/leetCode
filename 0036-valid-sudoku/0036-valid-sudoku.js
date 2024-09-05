@@ -4,14 +4,16 @@
  */
 function isValidSudoku(board) {
   for (let i = 0; i < 9; i++) {
-    let row = new Set(),
+    let row = new Set(), 
         col = new Set(),
         box = new Set();
+        /**JavaScript의 Set은 절대 중복을 허용하지 않는 자료구조  */
+        /**i  */
 
     for (let j = 0; j < 9; j++) {
       let _row = board[i][j];
       let _col = board[j][i];
-      let _box = board[3*Math.floor(i/3)+Math.floor(j/3)][3*(i%3)+(j%3)]
+      let _box = board[3*Math.floor(i/3)+Math.floor(j/3)][3*(i%3)+(j%3)]/**서브박스 인덱스 계산 */
       
       
       if (_row != '.') {
