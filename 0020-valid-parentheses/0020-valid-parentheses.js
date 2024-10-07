@@ -1,24 +1,25 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
 var isValid = function(s) {
-    let stack = []; // create an empty stack to store opening brackets
-    for (let c of s) { // loop through each character in the string
-        if (c === '(' || c === '{' || c === '[') { // if the character is an opening bracket
-            stack.push(c); // push it onto the stack
-        } else { // if the character is a closing bracket
-            if (!stack.length || // if the stack is empty or 
-                (c === ')' && stack[stack.length - 1] !== '(') || // the closing bracket doesn't match the corresponding opening bracket at the top of the stack
-                (c === '}' && stack[stack.length - 1] !== '{') ||
-                (c === ']' && stack[stack.length - 1] !== '[')) {
-                return false; // the string is not valid, so return false
+    const stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+        const cur = s[i];
+        if (stack.length) {
+            const last = stack[stack.length - 1];
+            if (isPair(last, cur)) {
+                stack.pop();
+                continue;
             }
-            stack.pop(); // otherwise, pop the opening bracket from the stack
         }
+        stack.push(cur);
     }
-    return !stack.length; // if the stack is empty, all opening brackets have been matched with their corresponding closing brackets,
-                          // so the string is valid, otherwise, there are unmatched opening brackets, so return false
+
+    return stack.length === 0;  
 };
 
-///({}}
+var isPair = function(last, cur) {
+    return (
+        (last === '(' && cur === ')') ||
+        (last === '{' && cur === '}') ||
+        (last === '[' && cur === ']')
+    );
+};
