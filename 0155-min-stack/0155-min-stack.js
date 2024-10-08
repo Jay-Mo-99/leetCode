@@ -1,0 +1,44 @@
+    let stack =[];
+var MinStack = function() {
+    stack = [];
+};
+
+/** 
+ * @param {number} val
+ * @return {void}
+ */
+MinStack.prototype.push = function(val) {
+    stack.push(val);
+};
+
+/**
+ * @return {void}
+ */
+MinStack.prototype.pop = function() {
+    stack.pop();
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function() {
+    return stack[stack.length-1];
+};
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.getMin = function() {
+    let order = [...stack];
+    order.sort((a,b)=>a-b);
+    return order[0]
+};
+
+/** 
+ * Your MinStack object will be instantiated and called as such:
+ * var obj = new MinStack()
+ * obj.push(val)
+ * obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.getMin()
+ */
