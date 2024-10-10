@@ -14,27 +14,24 @@ var evalRPN = function(tokens) {
             preTop = nStack.pop();
             answer = parseInt(preTop) + parseInt(top);
             nStack.push(answer);
-            console.log("After +" + answer);
 
         }else if(e === "-"){
             top = nStack.pop();
             preTop = nStack.pop();
             answer = preTop - top;
             nStack.push(answer);
-            console.log("After -" + answer);
+
         }else if(e === "*"){
             top = nStack.pop();
             preTop = nStack.pop();
             answer = preTop * top;
-            nStack.push(answer)
-            console.log("After *" + answer);;
+            nStack.push(answer);
 
         }else if(e === "/"){
             top = nStack.pop();
             preTop = nStack.pop();
             answer = Math.trunc(preTop/top);
             nStack.push(answer);
-            console.log("After /" + answer);;
 
         }else{
             nStack.push(e) 
