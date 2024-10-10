@@ -1,24 +1,16 @@
-/**
- * @param {number} n
- * @return {string[]}
- */
-var generateParenthesis = function(n) {
-    const retArray = [];
-    addParentheses('', 0, 0, n, retArray);
-    return retArray;
+const generateParenthesis = (n) => {
+  const res = [];
+
+  const go = (l, r, s) => {
+    if (s.length === 2 * n) {
+      res.push(s);
+      return;
+    }
+
+    if (l < n) go(l + 1, r, s + '(');
+    if (r < l) go(l, r + 1, s + ')');
+  };
+
+  go(0, 0, '');
+  return res;
 };
-
-const addParentheses = (currString, open, closed, n, retArray) => {
-    if (open === n && closed === n) {
-        retArray.push(currString);
-    }
-
-
-    if (open < n) {
-        addParentheses(currString + '(', open + 1, closed, n, retArray);
-    }
-
-    if (closed < open) {
-        addParentheses(currString + ')', open, closed + 1, n, retArray)
-    }
-}
