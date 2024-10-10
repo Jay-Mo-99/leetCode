@@ -1,47 +1,29 @@
-/**
- * @param {string[]} tokens
- * @return {number}
- */
-var evalRPN = function(tokens) {
-    const operand = tokens.pop();
-
-    let executor;
-    switch (operand) {
-        case "+":
-            executor = add;
-            break;
-        case "-":
-            executor = sub;
-            break;
-        case "*":
-            executor = mul;
-            break;
-        case "/":
-            executor = div;
-            break;
-        default:
-            // number
-            return parseInt(operand)
+const evalRPN = function ( tokens ) {
+  const stack = [];
+  
+  // If the token is an operator, the operands will be
+  // the last two items on the stack.
+  // Evaluate the expression then add the value back on to the stack,
+  // as it will be the operand for the next expression.
+  // Otherwise, its an operand (digit). Cast to number and add to stack.
+  tokens.forEach(( token ) => {
+    if ( /^[+\-*/]$/.test( token ) ) {
+      const [y, x] = [stack.pop(), stack.pop()];
+      stack.push( evaluate( x, y, token ) );
+    } else {
+      stack.push( +token );  // Number(token)
     }
-
-    const rhs = evalRPN(tokens);
-    const lhs = evalRPN(tokens);
-
-    return executor(lhs, rhs);
+  });
+ 
+  // The last evaluated expression is the answer
+  return stack.pop();
 };
 
-function add(lhs, rhs) {
-    return lhs + rhs
-}
-
-function sub(lhs, rhs) {
-    return lhs - rhs
-}
-
-function mul(lhs, rhs) {
-    return lhs * rhs;
-}
-
-function div(lhs, rhs) {
-    return Math.trunc(lhs / rhs)
-}
+const evaluate = ( x, y, op ) => {
+  switch ( op ) {
+    case '+': return x + y;
+    case '-': return x - y;
+    case '*': return x * y;
+    case '/': return x / y | 0;  // Math.trunc()
+  }
+};
