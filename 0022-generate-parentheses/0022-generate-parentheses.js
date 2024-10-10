@@ -1,16 +1,18 @@
 const generateParenthesis = (n) => {
   const res = [];
 
-  const go = (l, r, s) => {
-    if (s.length === 2 * n) {
+  const go = (l, r, s) => { // l: left remaining, r: right remaining
+    if (l > r) return; // Validate by the number of '(' should be always >= ')'
+
+    if (l === 0 && r === 0) {
       res.push(s);
       return;
     }
 
-    if (l < n) go(l + 1, r, s + '(');
-    if (r < l) go(l, r + 1, s + ')');
+    if (l > 0) go(l - 1, r, s + '(');
+    if (r > 0) go(l, r - 1, s + ')');
   };
 
-  go(0, 0, '');
+  go(n, n, '');
   return res;
 };
