@@ -1,43 +1,19 @@
-/**
- * @param {string[]} tokens
- * @return {number}
- */
-var evalRPN = function(tokens) {
-    const nStack = [];//Assign the Stack for number
-        let answer =0; //Variable for store the answer of calculation
-    //If the element of the tokens are operator, push the oStack, if not push the nStack
-    for(e of tokens){
-        let top = 0;
-        let preTop = 0;
-        if(e === "+"){
-            top = nStack.pop();
-            preTop = nStack.pop();
-            answer = parseInt(preTop) + parseInt(top);
-            nStack.push(answer);
-
-        }else if(e === "-"){
-            top = nStack.pop();
-            preTop = nStack.pop();
-            answer = preTop - top;
-            nStack.push(answer);
-
-        }else if(e === "*"){
-            top = nStack.pop();
-            preTop = nStack.pop();
-            answer = preTop * top;
-            nStack.push(answer);
-
-        }else if(e === "/"){
-            top = nStack.pop();
-            preTop = nStack.pop();
-            answer = Math.trunc(preTop/top);
-            nStack.push(answer);
-
-        }else{
-            nStack.push(e) 
-        }
-
+function evalRPN(tokens) {
+  let stack = [];
+  let ops = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    '*': (a, b) => a * b,
+    '/': (a, b) => a / b >= 0 ? Math.floor(a / b) : Math.ceil(a / b),
+  };
+  for (let t of tokens) {
+    if (ops[t]) {
+      let top = stack.pop();
+      let second = stack.pop();
+      stack.push(ops[t](second, top));
+    } else {
+      stack.push(Number(t));
     }
-    return parseInt(nStack[nStack.length-1]);
-
+  }
+  return stack.pop();
 };
