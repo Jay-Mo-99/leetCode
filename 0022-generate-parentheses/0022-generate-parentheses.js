@@ -1,18 +1,22 @@
 const generateParenthesis = (n) => {
   const res = [];
 
-  const go = (l, r, s) => { // l: left remaining, r: right remaining
-    if (l > r) return; // Validate by the number of '(' should be always >= ')'
-
-    if (l === 0 && r === 0) {
-      res.push(s);
+//Function for backtracking (Recursion Fuction)
+  const backTracking = (openB, closeB, currentString) => {
+    //If using all parentheses, push to the res stack. 
+    if (currentString.length === 2 * n) {
+      res.push(currentString);
       return;
     }
-
-    if (l > 0) go(l - 1, r, s + '(');
-    if (r > 0) go(l, r - 1, s + ')');
+    //If the open bracket(l) is less than parameter(n)
+    //Add the open bracket to the string(s)
+    if (openB < n) backTracking(openB + 1, closeB, currentString + '(');
+    //If the close bracket(r) is less than the number of open bracket(l)
+    //Add the close bracket to the string(s)  
+    if (closeB < openB) backTracking(openB, closeB + 1, currentString + ')');
   };
-
-  go(n, n, '');
+//Call the initial back tracking 
+//First calling of the recurision function 
+  backTracking(0, 0, '');
   return res;
 };
