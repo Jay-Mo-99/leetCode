@@ -3,6 +3,11 @@
  * @return {number}
  */
 var rob = function(nums) {
+    if(nums.length === 0){
+        return 0;
+    }else if(nums.length===1){
+        return nums[0];
+    }
     const dp = [...Array(nums.length)].fill(0);
     dp[0] = nums[0];
     dp[1] = Math.max(nums[0], nums[1]);
