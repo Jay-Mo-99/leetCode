@@ -2,20 +2,14 @@
  * @param {number} n
  * @return {string[]}
  */
+
 var fizzBuzz = function(n) {
-    let fizzBuzzArr = [];
-    for(let i = 1; i <= n; i++) {
-        let genString = "";
-        if (i % 3 === 0 ) {
-            genString += "Fizz"
-        }
-        if (i % 5 === 0) {
-            genString+= "Buzz"
-        }
-        if (genString === "") {
-            genString += i
-        }
-        fizzBuzzArr.push(genString);
-    }
-    return fizzBuzzArr;
+    let final = Array(n).fill("");
+    return final.map((_, index) => {
+        const i = index + 1;
+        const three = i % 3 === 0 ? "Fizz" : "";
+        const five = i % 5 === 0 ? "Buzz" : "";
+        const current = three.concat(five);
+        return current === "" ? i.toString() : current;
+    });
 };
