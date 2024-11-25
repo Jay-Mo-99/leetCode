@@ -9,5 +9,5 @@ var maximumDifference = function(nums) {
        min = Math.min(min,nums[i])
        diff=Math.max(diff,nums[i]-min)
    }
-   return diff==0 ? -1 : diff
+   return diff===0 ? -1 : diff
 };
