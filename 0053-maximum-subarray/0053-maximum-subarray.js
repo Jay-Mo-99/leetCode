@@ -2,8 +2,6 @@
  * @param {number[]} nums
  * @return {number}
  */
-
-
 var maxSubArray = function(nums) {
     // Initialize the max sum...
     let maxSum = nums[0];
