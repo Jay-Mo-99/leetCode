@@ -3,18 +3,17 @@
  * @return {number}
  */
 var maxSubArray = function(nums) {
-    // Initialize the max sum...
-    let maxSum = nums[0];
-    // Traverse all the element through the loop...
+    // 초기화
+    let max_so_far = nums[0];
+    let max_ending = nums[0];
+
+    // 배열 순회
     for (let i = 1; i < nums.length; i++) {
-        // nums[i] represents the largest sum of all subarrays ending with index i...
-        // then its value should be the larger one between nums[i]...
-        // nums[i-1] + nums[i] (largest sum plus current number with using prefix)...
-        // calculate nums[0], nums[1]…, nums[n] while comparing each one with current largest sum...
-        nums[i] = Math.max(0, nums[i - 1]) + nums[i];
-        // if nums[i] > maxSum then maxSum = nums[i]...
-        if (nums[i] > maxSum)
-            maxSum = nums[i];
+        // 현재 요소를 포함할지 새로 시작할지 결정
+        max_ending = Math.max(nums[i], max_ending + nums[i]);
+        // 최대값 갱신
+        max_so_far = Math.max(max_so_far, max_ending);
     }
-    return maxSum;      // return the contiguous subarray which has the largest sum...
+
+    return max_so_far;
 };
