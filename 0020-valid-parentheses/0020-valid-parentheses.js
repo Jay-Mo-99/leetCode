@@ -1,25 +1,41 @@
-var isValid = function(s) {
-    const stack = [];
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
 
-    for (let i = 0; i < s.length; i++) {
-        const cur = s[i];
-        if (stack.length) {
-            const last = stack[stack.length - 1];
-            if (isPair(last, cur)) {
-                stack.pop();
-                continue;
-            }
-        }
-        stack.push(cur);
+var isValid = function(s){
+    let answer = []//Stack for saving the correct type following requirements. 
+    if(s.length<=1){
+        console.log("Only have a one or zero character in the string s")
+        return false;
     }
 
-    return stack.length === 0;  
-};
-
-var isPair = function(last, cur) {
-    return (
-        (last === '(' && cur === ')') ||
-        (last === '{' && cur === '}') ||
-        (last === '[' && cur === ']')
-    );
+//Loop for approaching each element from the string s
+    for(let i =0;i<s.length;i++){
+        if(s[i]==="{"||s[i]==="("||s[i]==="["){
+            answer.push(s[i])//If the open bracket push the answer first. 
+        }else{
+            //If the s[i] is closed bracket 
+            if(s[i]===")"){
+                if(answer.pop()!=="("){
+                    return false;
+                }else{
+                    console.log(") match with ( " + answer);
+                }
+            }else if(s[i]==="}"){
+                if(answer.pop()!=="{"){
+                    return false;
+                }else{
+                    console.log("} match with { " + answer);
+                }
+            }else if(s[i]==="]"){
+                if(answer.pop()!=="["){
+                    return false;
+                }else{
+                    console.log("] match with [ " + answer);
+                }
+            }
+        }
+    }
+    return answer.length === 0;
 };
