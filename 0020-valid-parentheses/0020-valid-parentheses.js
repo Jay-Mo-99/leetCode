@@ -37,5 +37,9 @@ var isValid = function(s){
             }
         }
     }
-    return answer.length === 0;
+    if(answer.length===0){
+        return true;
+    }else{
+        return false;
+    }
 };
