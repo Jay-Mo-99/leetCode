@@ -3,24 +3,32 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var rotate = function(matrix) {
-    let row = matrix.length; //Save the row: The element num of total m
-    let col = matrix[0].length;//Save the length num of the each element 
-    let temp =[];
-    let answer = [];
-
-    for(let j=0;j<col;j++){
-        for(let i =row-1;i>=0;i--){
-            temp.push(matrix[i][j]);     
+    let l = 0, r = 0, d = 0, temp = 0;
+    while(l < matrix.length){
+        if(r < matrix.length){
+            temp = matrix[l][r];
+            matrix[l][r] = matrix[r][l];;
+            matrix[r][l] = temp;
+            r+=1;
         }
-        console.log("After i loop temp : "+temp);
-        answer.push([...temp]);
-        temp = [];
-    }
-
-    for(let k =0;k<row;k++){
-        for(let l =0;l<col;l++){
-            matrix[k][l] = answer[k][l]
+        else{
+            l+=1;
+            r = l;
         }
     }
-    return matrix;
+    r = matrix.length - 1;
+    l = 0;
+    while(l <= r){
+        if(d < matrix.length){
+            temp = matrix[d][l];
+            matrix[d][l] = matrix[d][r];
+            matrix[d][r] = temp;
+            d+=1;
+        }
+        else{
+            d = 0;
+            l+=1;
+            r-=1;
+        }
+    }
 };
