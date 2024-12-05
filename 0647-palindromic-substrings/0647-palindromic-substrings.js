@@ -3,16 +3,17 @@
  * @return {number}
  */
 var countSubstrings = function(s) {
-  const res = [];
-
-  const dfs = (start = 0, arr = []) => {
-    res.push(arr);
+    let count = 0;
     
-    for (let i = start; i < s.length; i++) {
-      dfs(i + 1, [...arr, s[i]]);
+    const bubbleFromCenter = (left, right) => {
+        while(left >= 0 && right < s.length && s[left] === s[right]) {
+            count++; left--; right++;
+        }
     }
-  };
-   dfs();
-
-  return res;
+    
+    for(let i = 0; i < s.length; i++) {
+        bubbleFromCenter(i, i);
+        bubbleFromCenter(i, i+1);
+    }
+    return count;
 };
