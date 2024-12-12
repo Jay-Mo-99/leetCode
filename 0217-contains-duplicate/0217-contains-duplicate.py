@@ -7,7 +7,9 @@ class Solution(object):
         my_list = list(set(nums))
         print(nums)
         print(my_list)
-        if my_list == nums:
+    
+    
+        if len(my_list) == len(nums):
             return False
         else:
             return True
