@@ -4,12 +4,4 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        my_list = list(set(nums))
-        print(nums)
-        print(my_list)
-    
-    
-        if len(my_list) == len(nums):
-            return False
-        else:
-            return True
+        return len(list(set(nums))) != len(nums)
