@@ -5,13 +5,12 @@ class Solution(object):
         :rtype: bool
         """
 
-        #removes all non alpha numeric items from the s
+        #removes all non alpha numeric(only accept alphabet and number) items from the s
         temp = lower(s)
         temp = " ".join(re.split("[^a-zA-Z0-9]*",temp)).replace(" ","")
         print(temp)
         print(len(temp))
         #Compare with temp and reverse temp 
-        if temp == temp[::-1]:
-            return True
-        else:
-            return False
+        #If they are same, it is palindrome
+        return temp == temp[::-1]
+        
