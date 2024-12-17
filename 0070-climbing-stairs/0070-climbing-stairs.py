@@ -4,9 +4,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n<3:
-            return n
-        pre,cur = 1,2
-        for _ in range(n-2):
-            pre,cur = cur,pre+cur
-        return cur
+        a,b = 1,2 #F(0) = 1, F(1) =2
+        for i in range(1,n):
+            a,b = b, a+b #Update a and b each iteration
+            #Fn = Fn-1 + Fn-2
+
+        return a
+        
