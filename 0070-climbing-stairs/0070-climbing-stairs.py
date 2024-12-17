@@ -4,11 +4,15 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        a,b = 1,2
+        if n==1:
+            return n
+        if n == 2:
+            return 2
+        seen = [1, 2]
+        i = 3
+        while i < n+1:
+            seen.append(seen[i-3]+seen[i-2])
+            i+=1
 
-        for i in range(1,n):
-            a,b = b, a+b
-            print(a)
-            print(b)
 
-        return a
+        return seen[-1]
