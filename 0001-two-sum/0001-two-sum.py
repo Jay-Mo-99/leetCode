@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: List[int]
         """
         indices = {value:idx for idx,value in enumerate(nums)}
-        #{인덱스:value}
+        #{값:인덱스}
         print(indices)
          #Dictionary comprehension
         
