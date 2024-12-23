@@ -5,8 +5,13 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        for i in range(0,len(nums)):
-            for j in range(i+1,len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i,j]
+        indices = {value:idx for idx,value in enumerate(nums)}
+        #{인덱스:value}
+        print(indices)
+         #Dictionary comprehension
         
+        for i,v in enumerate(nums):
+            complement = target - v
+            if complement in indices and indices[complement] != i:
+                j=indices[complement]
+                return [i,j]
