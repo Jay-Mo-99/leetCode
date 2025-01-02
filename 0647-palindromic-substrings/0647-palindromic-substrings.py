@@ -1,5 +1,9 @@
-class Solution:
-    def countSubstrings(self, s: str) -> int:
+class Solution(object):
+    def countSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
         dp = {}
 
         for end in range(len(s)):
