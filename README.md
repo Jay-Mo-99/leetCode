@@ -19,3 +19,19 @@
 - 2기 (Aug 11, 2024 - Nov 23, 2024): [프로젝트](https://github.com/orgs/DaleStudy/projects/3/views/3), [팀](https://github.com/orgs/DaleStudy/teams/leetcode02)
 - 1기 (Apr 21, 2024 - Aug 10, 2024): [프로젝트](https://github.com/orgs/DaleStudy/projects/1/views/1), [팀](https://github.com/orgs/DaleStudy/teams/leetcode01)
 
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0217-contains-duplicate](https://github.com/Jay-Mo-99/leetCode/tree/main/0217-contains-duplicate/) | Easy |
+## Hash Table
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0217-contains-duplicate](https://github.com/Jay-Mo-99/leetCode/tree/main/0217-contains-duplicate/) | Easy |
+## Sorting
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0217-contains-duplicate](https://github.com/Jay-Mo-99/leetCode/tree/main/0217-contains-duplicate/) | Easy |
+<!---LeetCode Topics End-->
