@@ -25,10 +25,12 @@
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0001-two-sum](https://github.com/Jay-Mo-99/leetCode/tree/main/0001-two-sum/) | Easy |
 | [0217-contains-duplicate](https://github.com/Jay-Mo-99/leetCode/tree/main/0217-contains-duplicate/) | Easy |
 ## Hash Table
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0001-two-sum](https://github.com/Jay-Mo-99/leetCode/tree/main/0001-two-sum/) | Easy |
 | [0217-contains-duplicate](https://github.com/Jay-Mo-99/leetCode/tree/main/0217-contains-duplicate/) | Easy |
 | [0242-valid-anagram](https://github.com/Jay-Mo-99/leetCode/tree/main/0242-valid-anagram/) | Easy |
 ## Sorting
