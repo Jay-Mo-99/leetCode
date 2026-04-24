@@ -1,16 +1,19 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]):
-        dict = {}
-        #Iterate the input strs
-        for s in strs:
-            key = "".join(sorted(s)) #Sorted s is key 
-            if key not in dict:
-                dict[key] = []
-            dict[key].append(s) #Add the s to the key
-        return list(dict.values())
+    #Hashmap
+    #{
+        #sortedKey: [s]
+    #}
+    #
+    anagram_map = {}
+    #Iterate the str 
+    for s in strs:
+        sorted_s = "".join(sorted(s))
+        if(not sorted_s in anagram_map):
+            anagram_map[sorted_s] = []
+        anagram_map[sorted_s] = s
+    return list(anagram_map.value())
 
-        #Sort the each str in strs
-        #If sorted str are same, be arranged the original tr
+    
 
-        
         
