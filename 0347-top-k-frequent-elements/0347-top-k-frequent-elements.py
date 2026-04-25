@@ -1,0 +1,19 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int):
+        #Create the hashmap 
+        #{ n: k}
+        kMap = {}
+        #Iterate the nums
+        for n in nums:
+            if(n in kMap):
+                kMap[n] +=1
+            else:
+                kMap[n] = 1
+        sorted_items = sorted(kMap.items(), key=lambda x: x[1], reverse=True)
+        result = []
+        for i in range(k):
+            result.append(sorted_items[i][0])
+        return result
+
+
+        
